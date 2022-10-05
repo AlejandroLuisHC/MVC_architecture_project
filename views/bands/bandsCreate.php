@@ -12,15 +12,9 @@
     <!-- Boostrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous" defer></script>
-    <!-- JS -->
-    <script src="../assets/js/bands.js" defer></script>
 </head>
 <body>
-    <div class="container-fluid text-center mt-3">
-        <h2><?php echo $data['title']?></h2>
-    </div>
-    
-    <div class="container-fluid">
+    <div class="mt-5 container-fluid">
         <form class="mb-3 container justify-content-center" action="" method="POST" name="new" autocomplete="off">
             <fieldset>
                 <legend class="text-center">Add new band to the database</legend>

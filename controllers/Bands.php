@@ -9,7 +9,15 @@
             
             $data["title"] = "Bands";
             $data["bands"] = $bands -> getBands();
-
-            require_once 'views/bands.php';
+            
+            require_once 'views/bands/bands.php';
+        }
+        
+        public function add() {
+            
+            $data["title"] = "Bands";
+            require_once 'views/bands/bandsCreate.php';
         }
     }
+
+    

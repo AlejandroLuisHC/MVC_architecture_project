@@ -5,11 +5,11 @@
         public function index() {
 
             require_once 'models/StylesModel.php';
-            $bands = new BandsModel();
+            $styles = new BandsModel();
             
             $data["title"] = "Styles";
             $data["styles"] = $styles -> getStyles();
 
-            require_once 'views/styles.php';
+            require_once 'views/styles/styles.php';
         }
     }
