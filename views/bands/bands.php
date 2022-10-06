@@ -19,7 +19,7 @@
     </div>
 
     <div class="container text-center mt-5">
-        <a class="col-6 align-self-center btn btn-primary">Add</a>
+        <a class="col-6 align-self-center btn btn-primary" href="?C=Bands&action=create">Add</a>
     </div>
     
     <div class="container-fluid">
@@ -30,7 +30,7 @@
                     <th>Name</th>
                     <th>No. members</th>
                     <th>No. albums</th>
-                    <th>Style</th>
+                    <th>Genre</th>
                     <th>Formed in</th>
                     <th>Actions</th>
                 </tr>
@@ -43,7 +43,7 @@
                         echo "<td>" . $d['band_name'] . "</td>";
                         echo "<td>" . $d['no_members'] . "</td>";
                         echo "<td>" . $d['no_albums'] . "</td>";
-                        echo "<td>" . $d['style'] . "</td>";
+                        echo "<td>" . $d['genre'] . "</td>";
                         echo "<td>" . $d['formed_in'] . "</td>";
                         echo "<td><a href=''>Update</a> or <a href=''>Delete</a></td>";
                         echo "</tr>";

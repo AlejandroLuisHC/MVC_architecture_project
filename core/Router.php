@@ -10,7 +10,15 @@ class Router {
             if ($fileExists) {
                 require_once $controllerPath;
                 $controller = new $controllerName;
-                $controller -> index();
+                if (!isset($_GET['action'])) {
+                    $controller -> index();
+                } else {
+                    if ($_GET['action'] == 'create') {
+                        $controller -> add();
+                    } else if ($_GET['action'] == 'update') {
+                        $controller -> insert();
+                    }
+                }
             } else {
                 $errorMsg = "The page you are trying to access does not exist.";
                 require_once VIEWS . "error/error.php";

@@ -15,7 +15,7 @@
         <h1>Tables availables</h1>
         <div class="list-group">
             <a class="list-group-item list-group-item-action" href="?C=Bands">List of bands</a>
-            <a class="list-group-item list-group-item-action" href="?C=Styles">List of styles</a>
+            <a class="list-group-item list-group-item-action" href="?C=Genres">List of genres</a>
     </div>
     </div>
 </body>
