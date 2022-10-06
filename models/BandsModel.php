@@ -56,8 +56,7 @@
         }
 
         public function deleteBand($band_id) {
-            $sql = "DELETE bands_data
-
+            $sql = "DELETE FROM bands_data
                     WHERE band_id = $band_id";
             try {
                 $res = $this -> db -> query($sql);       

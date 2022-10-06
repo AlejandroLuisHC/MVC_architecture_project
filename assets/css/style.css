@@ -55,3 +55,11 @@ footer {
     font-size: 45px;
     font-weight: bolder;
 }
+.error-msg {
+    grid-column: 1;
+    grid-row: 2;
+    padding: 30px;
+    margin-top: 15vh;
+    color: red;
+    text-align: center;
+}
