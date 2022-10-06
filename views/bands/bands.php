@@ -19,7 +19,7 @@
     </div>
 
     <div class="container text-center mt-5">
-        <a class="col-6 align-self-center btn btn-primary" href="?C=Bands&action=create">Add</a>
+        <a class="col-6 align-self-center btn btn-primary" href="?C=Bands&action=add">Add</a>
     </div>
     
     <div class="container-fluid">
@@ -45,7 +45,7 @@
                         echo "<td>" . $d['no_albums'] . "</td>";
                         echo "<td>" . $d['genre'] . "</td>";
                         echo "<td>" . $d['formed_in'] . "</td>";
-                        echo "<td><a href='?C=Bands&action=update'>Update</a> or <a href='?C=Bands&action=delete&id=" . $d['band_id'] . "'>Delete</a></td>";
+                        echo "<td><a href='?C=Bands&action=read&id=" . $d['band_id'] . "'>Update</a> or <a href='?C=Bands&action=delete&id=" . $d['band_id'] . "'>Delete</a></td>";
                         echo "</tr>";
                     }
                 ?>

@@ -6,7 +6,7 @@
         private $bands;
 
         public function __construct () {
-            $this -> db = Connect::conexion();
+            $this -> db = Connect::conection();
             $this -> bands = array();
         }
 
@@ -15,6 +15,21 @@
                     FROM bands_data b 
                     LEFT JOIN genres g 
                     ON band_genre = genre_id";
+            try {
+                $res = $this -> db -> query($sql);
+                while ($row = $res -> fetch()){
+                    $this -> bands[] = $row;
+                }
+                return $this -> bands;
+            } catch (PDOException $e) {
+                $errorMsg = "There was a problem accessing the database";
+                $e -> getMessage();
+                require_once VIEWS . "error/error.php";
+            }
+        }
+
+        public function getBand($band_id) {
+            $sql = "SELECT * FROM bands_data WHERE band_id = $band_id";
             try {
                 $res = $this -> db -> query($sql);
                 while ($row = $res -> fetch()){
@@ -41,7 +56,26 @@
         }
 
         public function deleteBand($band_id) {
-            $sql = "DELETE FROM bands_data
+            $sql = "DELETE bands_data
+
+                    WHERE band_id = $band_id";
+            try {
+                $res = $this -> db -> query($sql);       
+            } catch (PDOException $e) {
+                $errorMsg = "There was a problem accessing the database";
+                $e -> getMessage();
+                require_once VIEWS . "error/error.php";
+            }
+        }
+
+        public function updateBand($band_id, $band_name, $no_members, $no_albums, $band_genre, $formed_in) {
+            $sql = "UPDATE bands_data
+                    SET
+                        band_name   = '$band_name',
+                        no_members  = '$no_members',
+                        no_albums   = '$no_albums',
+                        band_genre  = '$band_genre',
+                        formed_in   = '$formed_in'
                     WHERE band_id = $band_id";
             try {
                 $res = $this -> db -> query($sql);       

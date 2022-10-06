@@ -19,7 +19,7 @@
     </div>
 
     <div class="container text-center mt-5">
-        <a class="col-6 align-self-center btn btn-primary" href="?C=Genres&action=create">Add</a>
+        <a class="col-6 align-self-center btn btn-primary" href="?C=Genres&action=add">Add</a>
     </div>
     
     <div class="container-fluid">
@@ -37,7 +37,7 @@
                         echo "<tr>";
                         echo "<td>" . $d['genre_id'] . "</td>";
                         echo "<td>" . $d['genre'] . "</td>";
-                        echo "<td><a href='?C=Genres&action=update'>Update</a> or <a href='?C=Genres&action=delete&id=" . $d['genre_id'] . "'>Delete</a></td>";
+                        echo "<td><a href='?C=Genres&action=read&id=" . $d['genre_id'] . "'>Update</a> or <a href='?C=Genres&action=delete&id=" . $d['genre_id'] . "'>Delete</a></td>";
                         echo "</tr>";
                     }
                 ?>

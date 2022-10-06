@@ -31,4 +31,14 @@
             $genres -> deleteGenre($genre_id);
             $this -> index();
         }
+
+        public function update() {
+            $genre_id  = $_POST['genre_id']; 
+            $genre     = $_POST['genre'];
+            
+            require_once 'models/GenresModel.php';
+            $genres = new GenresModel();
+            $genres -> updateGenre($genre_id, $genre);
+            $this -> index();
+        }
     }

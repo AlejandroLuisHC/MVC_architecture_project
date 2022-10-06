@@ -15,7 +15,7 @@
 </head>
 <body>
     <div class="mt-5 container-fluid">
-        <form class="mb-3 container justify-content-center" action="?C=Genres&action=update" method="POST" name="new" autocomplete="off">
+        <form class="mb-3 container justify-content-center" action="?C=Genres&action=insert" method="POST" name="new" autocomplete="off">
             <fieldset>
                 <legend class="text-center">Add new genre to the database</legend>
                 <div class="mb-3 col-6 container justify-content-center">

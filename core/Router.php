@@ -13,13 +13,17 @@ class Router {
                 if (!isset($_GET['action'])) {
                     $controller -> index();
                 } else {
-                    if ($_GET['action'] == 'create') {
+                    if ($_GET['action'] == 'add') {
                         $controller -> add();
-                    } else if ($_GET['action'] == 'update') {
+                    } else if ($_GET['action'] == 'insert') {
                         $controller -> insert();
                     } else if ($_GET['action'] == 'delete') {
                         $controller -> delete(); 
-                    }
+                    } else if ($_GET['action'] == 'read') {
+                        $controller -> read(); 
+                    } else if ($_GET['action'] == 'update') {
+                        $controller -> update(); 
+                    } 
                  }
             } else {
                 $errorMsg = "The page you are trying to access does not exist.";

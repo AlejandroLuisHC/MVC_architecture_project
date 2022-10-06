@@ -15,36 +15,106 @@
 </head>
 <body>
     <div class="mt-5 container-fluid">
-        <form class="mb-3 container justify-content-center" action="?C=Bands&action=update" method="POST" name="new" autocomplete="off">
+        <form class="mb-3 container" action="?C=Bands&action=update" method="POST" name="update" autocomplete="off">
             <fieldset>
-                <legend class="text-center">Add new band to the database</legend>
-                <div class="mb-3 col-6 container justify-content-center">
-                    <label class="form-label" for="band_name">Band name:</label>
-                    <input class="form-control" type="text" maxlength="25" name="band_name">
-                </div>
-                <div class="mb-3 col-6 container justify-content-center">
-                    <label class="form-label" for="no_members">No. members:</label>
-                    <input class="form-control" type="number" name="no_members">
-                </div>
-                <div class="mb-3 col-6 container justify-content-center">
-                    <label class="form-label" for="no_albums">No. albums:</label>
-                    <input class="form-control" type="number" name="no_albums">
-                </div>
-                <div class="mb-3 col-6 container justify-content-center">
-                    <label class="form-label" for="band_genre">Band Genre:</label>
-                    <select class="form-select" name="band_genre">
-                        <option value="1">Heavy Metal</option>
-                        <option value="2">Death Metal</option>
-                        <option value="3">Black Metal</option>
-                        <option value="4">Folk Metal</option>
-                        <option value="5">Power Metal</option>
-                    </select>
-                </div>
-                <div class="mb-3 col-6 container justify-content-center">
-                    <label class="form-label" for="formed_in">Formed in:</label>
-                    <input class="form-control" type="number" min="1800" max="2023" name="formed_in" value="2022">
-                </div>
-                <div class="mb-3 col-6 container justify-content-center">
+                <legend class="text-center">Update band information</legend>
+                <table class="mt-3 table table-dark table-striped">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>No. members</th>
+                            <th>No. albums</th>
+                            <th>Genre</th>
+                            <th>Formed in</th>
+                        </tr>
+                    </thead>
+                    <tbody id = "tBody">
+                        <?php 
+                            function selectGenre($g) {
+                                switch ($g) {
+                                    case 1:
+                                        $op = <<<op
+                                            <option value="1" selected>Heavy Metal</option>
+                                            <option value="2">Death Metal</option>
+                                            <option value="3">Black Metal</option>
+                                            <option value="4">Folk Metal</option>
+                                            <option value="5">Power Metal</option>
+                                        op;
+                                        return $op;
+                                        break;
+                                    case 2:
+                                        $op = <<<op
+                                            <option value="1">Heavy Metal</option>
+                                            <option value="2" selected>Death Metal</option>
+                                            <option value="3">Black Metal</option>
+                                            <option value="4">Folk Metal</option>
+                                            <option value="5">Power Metal</option>
+                                        op;
+                                        return $op;
+                                        break;
+                                    case 3:
+                                        $op = <<<op
+                                            <option value="1">Heavy Metal</option>
+                                            <option value="2">Death Metal</option>
+                                            <option value="3" selected>Black Metal</option>
+                                            <option value="4">Folk Metal</option>
+                                            <option value="5">Power Metal</option>
+                                        op;
+                                        return $op;
+                                        break;
+                                    case 4:
+                                        $op = <<<op
+                                            <option value="1">Heavy Metal</option>
+                                            <option value="2">Death Metal</option>
+                                            <option value="3">Black Metal</option>
+                                            <option value="4" selected>Folk Metal</option>
+                                            <option value="5">Power Metal</option>
+                                        op;
+                                        return $op;
+                                        break;
+                                    case 5:
+                                        $op = <<<op
+                                            <option value="1">Heavy Metal</option>
+                                            <option value="2">Death Metal</option>
+                                            <option value="3">Black Metal</option>
+                                            <option value="4">Folk Metal</option>
+                                            <option value="5" selected>Power Metal</option>
+                                        op;
+                                        return $op;
+                                        break;
+                                    default:
+                                        $op = <<<op
+                                            <option value="1">Heavy Metal</option>
+                                            <option value="2">Death Metal</option>
+                                            <option value="3">Black Metal</option>
+                                            <option value="4">Folk Metal</option>
+                                            <option value="5">Power Metal</option>
+                                        op;
+                                        return $op;
+                                        break;
+                                        
+                                };
+                            }
+
+                            foreach ($data['bands'] as $d) {
+                                $option = selectGenre($d['band_genre']);
+                                echo "<tr>";
+                                echo "<td><input class='form-control' type='number'  name='band_id' value='" . $d['band_id'] . "' readonly></td>";
+                                echo "<td><input class='form-control' type='text'  name='band_name' value='" . $d['band_name'] . "' ></td>";
+                                echo "<td><input class='form-control' type='number'  name='no_members' value='" . $d['no_members'] . "' ></td>";
+                                echo "<td><input class='form-control' type='number'  name='no_albums' value='" . $d['no_albums'] . "' ></td>";
+                                echo "<td> <select class='form-select' name='band_genre'>";
+                                echo $option;
+                                echo "</select></td>";
+                                echo "<td><input class='form-control' type='number' min='1800' max='2023' name='formed_in' value='" . $d['formed_in'] . "' ></td>"; 
+                                echo "</tr>";
+                            }
+                        ?>
+                    </tbody>
+                </table>
+
+                <div class="mb-3 col-1 container">
                     <button type="submit" name="submit" class="btn btn-primary">Submit</button>
                 </div>
             </fieldset>

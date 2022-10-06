@@ -1,7 +1,7 @@
 <?php
 
     class Connect {
-        public static function conexion() {
+        public static function conection() {
             $host       = 'localhost';
             $database   = 'mysql';
             $port       = 3306;
