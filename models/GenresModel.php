@@ -1,8 +1,7 @@
 <?php 
     require_once 'config/db.php';
     
-
-    class BandsModel {
+    class GenresModel {
         private $db;
         private $genres;
 
@@ -19,6 +18,17 @@
                     $this -> genres[] = $row;
                 }
                 return $this -> genres;     
+            } catch (PDOException $e) {
+                $errorMsg = "There was a problem accessing the database";
+                require_once VIEWS . "error/error.php";
+            }
+        }
+        
+        public function insertGenre($genre) {
+            $sql = "INSERT INTO genres (genre)
+                    VALUES ('$genre')";
+            try {
+                $res = $this -> db -> query($sql);       
             } catch (PDOException $e) {
                 $errorMsg = "There was a problem accessing the database";
                 require_once VIEWS . "error/error.php";

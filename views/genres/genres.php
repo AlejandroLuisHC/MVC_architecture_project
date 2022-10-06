@@ -19,7 +19,7 @@
     </div>
 
     <div class="container text-center mt-5">
-        <a class="col-6 align-self-center btn btn-primary">Add</a>
+        <a class="col-6 align-self-center btn btn-primary" href="?C=Genres&action=create">Add</a>
     </div>
     
     <div class="container-fluid">
