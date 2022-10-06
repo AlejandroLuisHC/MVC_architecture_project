@@ -66,7 +66,7 @@
 
         public function updateGenres($genre_id, $genre) {
             $sql = "UPDATE genres
-                    SET genre = $genre
+                    SET genre = '$genre'
                     WHERE genre_id = $genre_id";
             try {
                 $res = $this -> db -> query($sql);       

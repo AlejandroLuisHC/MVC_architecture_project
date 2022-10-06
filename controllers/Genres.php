@@ -14,6 +14,14 @@
             require_once 'views/genres/genresCreate.php';
         }
 
+        public function read() {
+            $genre_id = $_GET['id'];
+            require_once 'models/GenresModel.php';
+            $genres = new GenresModel();
+            $data["genres"] = $genres -> getGenre($genre_id);
+            require_once 'views/genres/genresUpdate.php';
+        }
+
         public function insert() {
             $genre = $_POST['genre'];
             
@@ -38,7 +46,7 @@
             
             require_once 'models/GenresModel.php';
             $genres = new GenresModel();
-            $genres -> updateGenre($genre_id, $genre);
+            $genres -> updateGenres($genre_id, $genre);
             $this -> index();
         }
     }

@@ -18,7 +18,6 @@
             $band_id = $_GET['id'];
             require_once 'models/BandsModel.php';
             $bands = new BandsModel();
-            $data["title"] = "Bands";
             $data["bands"] = $bands -> getBand($band_id);
             require_once 'views/bands/bandsUpdate.php';
         }
