@@ -26,5 +26,14 @@
             $bands -> insertBand($band_name, $no_members, $no_albums, $band_genre, $formed_in);
             $this -> index();
         }
+
+        public function delete() {
+            $band_id  = $_GET['id'];        
+            
+            require_once 'models/BandsModel.php';
+            $bands = new BandsModel();
+            $bands -> deleteBand($band_id);
+            $this -> index();
+        }
     }
     

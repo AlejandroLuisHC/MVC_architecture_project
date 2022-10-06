@@ -23,6 +23,7 @@
                 return $this -> bands;
             } catch (PDOException $e) {
                 $errorMsg = "There was a problem accessing the database";
+                $e -> getMessage();
                 require_once VIEWS . "error/error.php";
             }
         }
@@ -34,6 +35,19 @@
                 $res = $this -> db -> query($sql);       
             } catch (PDOException $e) {
                 $errorMsg = "There was a problem accessing the database";
+                $e -> getMessage();
+                require_once VIEWS . "error/error.php";
+            }
+        }
+
+        public function deleteBand($band_id) {
+            $sql = "DELETE FROM bands_data
+                    WHERE band_id = $band_id";
+            try {
+                $res = $this -> db -> query($sql);       
+            } catch (PDOException $e) {
+                $errorMsg = "There was a problem accessing the database";
+                $e -> getMessage();
                 require_once VIEWS . "error/error.php";
             }
         }

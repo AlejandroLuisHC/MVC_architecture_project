@@ -45,7 +45,7 @@
                         echo "<td>" . $d['no_albums'] . "</td>";
                         echo "<td>" . $d['genre'] . "</td>";
                         echo "<td>" . $d['formed_in'] . "</td>";
-                        echo "<td><a href=''>Update</a> or <a href=''>Delete</a></td>";
+                        echo "<td><a href='?C=Bands&action=update'>Update</a> or <a href='?C=Bands&action=delete&id=" . $d['band_id'] . "'>Delete</a></td>";
                         echo "</tr>";
                     }
                 ?>

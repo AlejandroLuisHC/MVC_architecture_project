@@ -20,6 +20,7 @@
                 return $this -> genres;     
             } catch (PDOException $e) {
                 $errorMsg = "There was a problem accessing the database";
+                $e -> getMessage();
                 require_once VIEWS . "error/error.php";
             }
         }
@@ -31,6 +32,19 @@
                 $res = $this -> db -> query($sql);       
             } catch (PDOException $e) {
                 $errorMsg = "There was a problem accessing the database";
+                $e -> getMessage();
+                require_once VIEWS . "error/error.php";
+            }
+        }
+        
+        public function deleteGenre($genre_id) {
+            $sql = "DELETE FROM genres
+                    WHERE genre_id = $genre_id";
+            try {
+                $res = $this -> db -> query($sql);       
+            } catch (PDOException $e) {
+                $errorMsg = "There was a problem accessing the database";
+                $e -> getMessage();
                 require_once VIEWS . "error/error.php";
             }
         }

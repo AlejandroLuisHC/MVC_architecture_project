@@ -37,7 +37,7 @@
                         echo "<tr>";
                         echo "<td>" . $d['genre_id'] . "</td>";
                         echo "<td>" . $d['genre'] . "</td>";
-                        echo "<td><a href=''>Update</a> or <a href=''>Delete</a></td>";
+                        echo "<td><a href='?C=Genres&action=update'>Update</a> or <a href='?C=Genres&action=delete&id=" . $d['genre_id'] . "'>Delete</a></td>";
                         echo "</tr>";
                     }
                 ?>

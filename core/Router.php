@@ -17,8 +17,10 @@ class Router {
                         $controller -> add();
                     } else if ($_GET['action'] == 'update') {
                         $controller -> insert();
+                    } else if ($_GET['action'] == 'delete') {
+                        $controller -> delete(); 
                     }
-                }
+                 }
             } else {
                 $errorMsg = "The page you are trying to access does not exist.";
                 require_once VIEWS . "error/error.php";

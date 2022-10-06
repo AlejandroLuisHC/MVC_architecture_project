@@ -22,4 +22,13 @@
             $genres -> insertGenre($genre);
             $this -> index();
         }
+
+        public function delete() {
+            $genre_id  = $_GET['id'];        
+            
+            require_once 'models/GenresModel.php';
+            $genres = new GenresModel();
+            $genres -> deleteGenre($genre_id);
+            $this -> index();
+        }
     }
