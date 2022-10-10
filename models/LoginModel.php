@@ -30,7 +30,7 @@
             try {
                 $res = $this -> db -> query($sql);
                 $userData = $res -> fetch();
-                if ($userData !== null) {
+                if ($userData) {
                     if ($userData['password'] == $this -> pass) {
                         session_start();
                         $_SESSION['user'] = $userData['user'];
