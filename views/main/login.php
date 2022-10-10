@@ -15,11 +15,13 @@
     <?php require_once(HEADER) ?>
     <main>
         <div class="mt-5 container col-8 justify-content-center align-items-center">
-            <h1>Tables availables</h1>
-            <div class="list-group">
-                <a class="list-group-item list-group-item-action" href="?C=Bands">List of bands</a>
-                <a class="list-group-item list-group-item-action" href="?C=Genres">List of genres</a>
-            </div>
+            <form action="index.php?C=Login" method="POST">
+                <label for="user">USER:</label>
+                <input type="text" name="user">
+                <label for="pass">PASSWORD:</label>
+                <input type="password" name="pass">
+                <button type="submit">Submit</button>
+            </form>
         </div>
     </main>
     <?php require_once(FOOTER) ?>

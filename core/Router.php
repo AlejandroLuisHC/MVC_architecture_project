@@ -8,10 +8,17 @@ class Router {
             $controllerPath = CONTROLLERS . $_GET['C'] . ".php";
             $fileExists = file_exists($controllerPath);
             if ($fileExists) {
-                require_once $controllerPath;
-                $controller = new $controllerName;
                 if (!isset($_GET['action'])) {
-                    $controller -> index();
+                    require_once $controllerPath;
+                    if ($_GET['C'] !== 'Login') {
+                        $controller = new $controllerName;
+                        $controller -> index();
+                    } else {
+                        $user = $_POST['user'];
+                        $pass = $_POST['pass'];
+                        $controller = new $controllerName($user, $pass);
+                        $controller -> logIn();
+                    }
                 } else {
                     if ($_GET['action'] == 'add') {
                         $controller -> add();
@@ -30,7 +37,7 @@ class Router {
                 require_once VIEWS . "error/error.php";
             }
         } else {
-            require_once VIEWS . "main/main.php";
+            require_once VIEWS . "main/login.php";
         }
     }
 }

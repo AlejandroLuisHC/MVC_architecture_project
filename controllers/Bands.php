@@ -2,12 +2,12 @@
     
     class BandsController {
         public function index() {
-            require_once 'models/BandsModel.php';
+            require_once MODELS . 'BandsModel.php';
             $bands = new BandsModel();
             $data["title"] = "Bands";
             $data["bands"] = $bands -> getBands();
             
-            require_once 'views/bands/bands.php';
+            require_once VIEWS . 'bands/bands.php';
         }
         
         public function add() {
@@ -17,10 +17,10 @@
         
         public function read() {
             $band_id = $_GET['id'];
-            require_once 'models/BandsModel.php';
+            require_once MODELS . 'BandsModel.php';
             $bands = new BandsModel();
             $data["bands"] = $bands -> getBand($band_id);
-            require_once 'views/bands/bandsUpdate.php';
+            require_once VIEWS . 'bands/bandsUpdate.php';
         }
 
         public function insert() {
@@ -30,7 +30,7 @@
             $band_genre = $_POST['band_genre'];
             $formed_in  = $_POST['formed_in'];
             
-            require_once 'models/BandsModel.php';
+            require_once MODELS . 'BandsModel.php';
             $bands = new BandsModel();
             $bands -> insertBand($band_name, $no_members, $no_albums, $band_genre, $formed_in);
             $this -> index();
@@ -39,7 +39,7 @@
         public function delete() {
             $band_id  = $_GET['id'];        
             
-            require_once 'models/BandsModel.php';
+            require_once MODELS . 'BandsModel.php';
             $bands = new BandsModel();
             $bands -> deleteBand($band_id);
             $this -> index();
@@ -53,7 +53,7 @@
             $band_genre = $_POST['band_genre'];
             $formed_in  = $_POST['formed_in'];
 
-            require_once 'models/BandsModel.php';
+            require_once MODELS . 'BandsModel.php';
             $bands = new BandsModel();
             $bands -> updateBand($band_id, $band_name, $no_members, $no_albums, $band_genre, $formed_in);
             $this -> index();
