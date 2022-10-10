@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 class Router {
     function __construct()
@@ -14,10 +15,14 @@ class Router {
                         $controller = new $controllerName;
                         $controller -> index();
                     } else {
-                        $user = $_POST['user'];
-                        $pass = $_POST['pass'];
-                        $controller = new $controllerName($user, $pass);
-                        $controller -> logIn();
+                        if(isset($_SESSION['user'])){
+                            require_once VIEWS . "main/main.php";
+                        } else {
+                            $user = $_POST['user'];
+                            $pass = $_POST['pass'];
+                            $controller = new $controllerName($user, $pass);
+                            $controller -> logIn();
+                        }
                     }
                 } else {
                     if ($_GET['action'] == 'add') {

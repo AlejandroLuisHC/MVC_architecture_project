@@ -12,7 +12,9 @@
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-    <?php require_once(HEADER) ?>
+    <header>
+        <span class="header-title">MVC tables manager</span>
+    </header>
     <main>
         <div class="mt-5 container col-8 justify-content-center align-items-center">
             <form action="index.php?C=Login" method="POST">
