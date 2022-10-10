@@ -15,10 +15,7 @@
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-    <header>
-        <span class="header-title">MVC tables manager</span>
-        <nav><a href="index.php" type="button" class="btn btn-secondary">Index</a></nav>
-    </header>
+    <?php require_once(HEADER) ?>
     <main>
         <div class="mt-5 container-fluid">
             <form class="mb-3 container" action="?C=Genres&action=update" method="POST" name="update" autocomplete="off">
@@ -50,6 +47,6 @@
             </form>
         </div>
     </main>
-    <footer><small>Alejandro L. Herrero</small></footer>
+    <?php require_once(FOOTER) ?>
 </body>
 </html>

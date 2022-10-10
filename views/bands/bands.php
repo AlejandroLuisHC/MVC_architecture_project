@@ -1,5 +1,5 @@
 <?php
-    
+
 ?>
 
 <!DOCTYPE html>
@@ -15,15 +15,12 @@
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-    <header>
-        <span class="header-title">MVC tables manager</span>
-        <nav><a href="index.php" type="button" class="btn btn-secondary">Index</a></nav>
-    </header>
+    <?php require_once(HEADER) ?>
     <main>
         <div class="container-fluid text-center mt-3">
             <h2 class="main-title"><?php echo $data['title']?></h2>
         </div>
-
+        
         <div class="container text-center mt-5">
             <a class="col-6 align-self-center btn btn-primary" href="?C=Bands&action=add">Add</a>
         </div>
@@ -59,6 +56,6 @@
             </table>
         </div>
     </main>
-    <footer><small>Alejandro L. Herrero</small></footer>
+    <?php require_once(FOOTER) ?>
 </body>
 </html>

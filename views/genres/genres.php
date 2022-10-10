@@ -15,10 +15,7 @@
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-    <header>
-        <span class="header-title">MVC tables manager</span>
-        <nav><a href="index.php" type="button" class="btn btn-secondary">Index</a></nav>
-    </header>
+    <?php require_once(HEADER) ?>
     <main>
         <div class="container-fluid text-center mt-3">
             <h2 class="main-title"><?php echo $data['title']?></h2>
@@ -51,6 +48,6 @@
             </table>
         </div>
     </main>
-    <footer><small>Alejandro L. Herrero</small></footer>
+    <?php require_once(FOOTER) ?>
 </body>
 </html>

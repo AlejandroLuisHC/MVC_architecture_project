@@ -6,6 +6,7 @@
             $bands = new BandsModel();
             $data["title"] = "Bands";
             $data["bands"] = $bands -> getBands();
+            
             require_once 'views/bands/bands.php';
         }
         
