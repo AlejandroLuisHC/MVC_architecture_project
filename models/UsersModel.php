@@ -41,10 +41,18 @@
         }
 
         public function insertUser($user, $email, $password, $role) {
-            $sql = "INSERT INTO users (user, email, password, role)
-                    VALUES ('$user', '$email', '$password', '$role')";
+            $sql = $this -> db -> prepare(
+                "INSERT INTO users (user, email, password, role)
+                VALUES (?, ?, ?, ?)");
+
+            $sql -> bindParam(1, $user);
+            $sql -> bindParam(2, $email);
+            $sql -> bindParam(3, $password);
+            $sql -> bindParam(4, $role);
+
             try {
-                $res = $this -> db -> query($sql);       
+                $sql -> execute();  
+
             } catch (PDOException $e) {
                 $errorMsg = "There was a problem accessing the database";
                 $e -> getMessage();
