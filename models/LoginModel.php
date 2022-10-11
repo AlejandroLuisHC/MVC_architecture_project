@@ -6,10 +6,13 @@
         private string $pass;
         private $db;
 
-        public function __construct($user, $pass){
-            $this -> db     = Connect::conection();
-            $this -> user   = $user;
-            $this -> pass   = $pass;
+        public function __construct(){
+            $this -> db = Connect::conection();
+        }
+        
+        public function setUser($user, $pass) {
+            $this -> user = $user;
+            $this -> pass = $pass;
         }
 
         public function checkIn(){
@@ -32,8 +35,9 @@
                 $userData = $res -> fetch();
                 if ($userData) {
                     if ($userData['password'] == $this -> pass) {
-                        session_start();
-                        $_SESSION['user'] = $userData['user'];
+                        $storeUser = $userData['user'];
+
+                        $_SESSION['user'] = $storeUser;
                         require_once VIEWS . "main/main.php";
                     } else {
                         // Wrong password
@@ -50,7 +54,7 @@
             }
         }
 
-        public function getUser() {
-            return $this -> user; 
+        public function checkOut() {
+            session_destroy();
         }
     }
