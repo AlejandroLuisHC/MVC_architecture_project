@@ -21,9 +21,13 @@
             <h2 class="main-title"><?php echo $data['title']?></h2>
         </div>
         
-        <div class="container text-center mt-5">
-            <a class="col-6 align-self-center btn btn-primary" href="?C=Bands&action=add">Add</a>
-        </div>
+        <?php 
+            if ($_SESSION['role'] == 'admin') {
+                echo "<div class='container text-center mt-5'>
+                    <a class='col-6 align-self-center btn btn-primary' href='?C=Bands&action=add'>Add</a>
+                </div>";  
+            }
+        ?>
         
         <div class="container-fluid">
             <table class="mt-3 table table-dark table-striped">
@@ -35,7 +39,11 @@
                         <th>No. albums</th>
                         <th>Genre</th>
                         <th>Formed in</th>
-                        <th style="width: 150px;">Actions</th>
+                        <?php 
+                            if ($_SESSION['role'] == 'admin') {
+                                echo "<th style='width: 150px;'>Actions</th>";
+                            }
+                        ?>
                     </tr>
                 </thead>
                 <tbody id = "tBody">
@@ -48,7 +56,9 @@
                             echo "<td>" . $d['no_albums'] . "</td>";
                             echo "<td>" . $d['genre'] . "</td>";
                             echo "<td>" . $d['formed_in'] . "</td>";
-                            echo "<td><a href='?C=Bands&action=read&id=" . $d['band_id'] . "'>Update</a> or <a href='?C=Bands&action=delete&id=" . $d['band_id'] . "'>Delete</a></td>";
+                            if ($_SESSION['role'] == 'admin') {
+                                echo "<td><a href='?C=Bands&action=read&id=" . $d['band_id'] . "'>Update</a> or <a href='?C=Bands&action=delete&id=" . $d['band_id'] . "'>Delete</a></td>";
+                            }
                             echo "</tr>";
                         }
                     ?>

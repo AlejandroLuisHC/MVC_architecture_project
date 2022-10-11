@@ -20,10 +20,14 @@
         <div class="container-fluid text-center mt-3">
             <h2 class="main-title"><?php echo $data['title']?></h2>
         </div>
-
-        <div class="container text-center mt-5">
-            <a class="col-6 align-self-center btn btn-primary" href="?C=Genres&action=add">Add</a>
-        </div>
+        <?php 
+            if ($_SESSION['role'] == 'admin') {
+                echo "<div class='container text-center mt-5'>
+                    <a class='col-6 align-self-center btn btn-primary' href='?C=Genres&action=add'>Add</a>
+                </div>";  
+            }
+        ?>
+        
         
         <div class="container-fluid">
             <table class="mt-3 table table-dark table-striped">
@@ -31,7 +35,11 @@
                     <tr>
                         <th style="width: 150px;">#</th>
                         <th>Genre</th>
-                        <th style="width: 150px;">Actions</th>
+                        <?php 
+                            if ($_SESSION['role'] == 'admin') {
+                                echo "<th style='width: 150px;'>Actions</th>";
+                            }
+                        ?>
                     </tr>
                 </thead>
                 <tbody id = "tBody">
@@ -40,7 +48,9 @@
                             echo "<tr>";
                             echo "<td>" . $d['genre_id'] . "</td>";
                             echo "<td>" . $d['genre'] . "</td>";
-                            echo "<td><a href='?C=Genres&action=read&id=" . $d['genre_id'] . "'>Update</a> or <a href='?C=Genres&action=delete&id=" . $d['genre_id'] . "'>Delete</a></td>";
+                            if ($_SESSION['role'] == 'admin') {
+                                echo "<td><a href='?C=Genres&action=read&id=" . $d['genre_id'] . "'>Update</a> or <a href='?C=Genres&action=delete&id=" . $d['genre_id'] . "'>Delete</a></td>";
+                            }
                             echo "</tr>";
                         }
                     ?>
