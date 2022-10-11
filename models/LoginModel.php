@@ -21,11 +21,11 @@
             if (strpos($user, '@') !== false) {
                 list($username, $domain) = explode('@', $user);
 
-                $sql = "SELECT user, password  
+                $sql = "SELECT user, password, role  
                         FROM users
                         WHERE email LIKE '$username%$domain'";
             } else {
-                $sql = "SELECT user, password 
+                $sql = "SELECT user, password, role
                         FROM users
                         WHERE user = '$user'";
             }
@@ -36,16 +36,20 @@
                 if ($userData) {
                     if ($userData['password'] == $this -> pass) {
                         $storeUser = $userData['user'];
+                        $storeRole = $userData['role'];
 
                         $_SESSION['user'] = $storeUser;
+                        $_SESSION['role'] = $storeRole;
+
                         require_once VIEWS . "main/main.php";
+
                     } else {
-                        // Wrong password
-                        echo "error no pass";
+                        $errorMsg = "User or password incorrect";
+                        require_once VIEWS . "error/error.php";
                     }
                 } else {
-                    // Error: No user found
-                    echo "error no user";
+                    $errorMsg = "User or password incorrect";
+                    require_once VIEWS . "error/error.php";
                 }
             } catch (PDOException $e) {
                 $errorMsg = "There was a problem accessing the database";

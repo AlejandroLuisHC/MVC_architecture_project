@@ -17,12 +17,20 @@
     </header>
     <main>
         <div class="mt-5 container col-8 justify-content-center align-items-center">
-            <form action="index.php?C=Login" method="POST">
-                <label for="user">USER:</label>
-                <input type="text" name="user">
-                <label for="pass">PASSWORD:</label>
-                <input type="password" name="pass">
-                <button type="submit">Submit</button>
+            <form class="mb-3 container justify-content-center" action="index.php?C=Login" method="POST">
+                <fieldset>
+                <div class="mb-3 col-6 container justify-content-center">
+                    <label class="form-label" for="user">User or email:</label>
+                    <input class="form-control" type="text" name="user">
+                </div>
+                <div class="mb-3 col-6 container justify-content-center">
+                    <label class="form-label" for="pass">Password:</label>
+                    <input class="form-control" type="password" name="pass">
+                </div>
+                <div class="mb-3 col-6 container justify-content-center">
+                    <button type="submit" class="btn btn-primary">Log in</button>
+                </div>
+                </fieldset>
             </form>
         </div>
     </main>
