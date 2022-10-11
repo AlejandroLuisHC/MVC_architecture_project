@@ -17,11 +17,11 @@
 <body>
     <?php require_once(HEADER) ?>
     <main>
-      <?php
-         echo "<div class='error-msg'>";
-         echo "<h1>". $errorMsg ."</h1>";
-         echo "</div>";
-      ?>
+        <?php
+          echo "<div class='error-msg'>";
+          echo "<h1>". $errorMsg ."</h1>";
+          echo "</div>";
+        ?>
     </main>
     <?php require_once(FOOTER) ?>
 </body>

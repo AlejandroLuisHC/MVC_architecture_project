@@ -22,6 +22,11 @@
             <div class="list-group">
                 <a class="list-group-item list-group-item-action" href="?C=Bands">List of bands</a>
                 <a class="list-group-item list-group-item-action" href="?C=Genres">List of genres</a>
+                <?php 
+                    if ($_SESSION['role'] == 'admin') {
+                        echo "<a class='list-group-item list-group-item-action' href='?C=Users'>List of users</a>";
+                    }
+                ?>
             </div>
         </div>
     </main>
