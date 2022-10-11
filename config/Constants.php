@@ -7,3 +7,5 @@
     define("MODELS", BASE_PATH . "/models/");
     define("RESOURCES", BASE_PATH . "/resources/");
     define("MAIN_PAGE", BASE_PATH . "index.php");
+    define("HEADER", BASE_PATH . "/assets/html/header.php");
+    define("FOOTER", BASE_PATH . "/assets/html/footer.php");
