@@ -18,23 +18,23 @@
     </header>
     <main>
         <div class="mt-5 container col-6">
-            <div id="logoutInfo" class="mb-5 container col-10"><?php echo $logMsg ?></div>
-            <div id="loginAlert" class="mb-5 container col-10"></div>
+            <div id="logoutInfo" class="mb-5 container col-10"><?php if(isset($logMsg)){echo $logMsg;}; ?></div>
             <form id="loginForm" class="mb-3 container">
                 <fieldset>
-                <div class="mb-3 container">
-                    <label class="form-label" for="user">User or email:</label>
-                    <input class="form-control" type="text" name="user" required>
-                </div>
-                <div class="mb-3 container">
-                    <label class="form-label" for="pass">Password:</label>
-                    <input class="form-control" type="password" name="pass" required>
-                </div>
-                <div class="mb-3 container">
-                    <input type="submit" class="btn btn-primary" value="Log in">
-                </div>
+                    <div class="mb-3 container">
+                        <label class="form-label" for="user">User or email:</label>
+                        <input id="userIn" class="form-control" type="text" name="user" required>
+                    </div>
+                    <div class="mb-3 container">
+                        <label class="form-label" for="pass">Password:</label>
+                        <input id="pwdIn" class="form-control" type="password" name="pass" required>
+                    </div>
+                    <div class="mb-3 container">
+                        <input type="submit" class="btn btn-primary" value="Log in">
+                    </div>
                 </fieldset>
             </form>
+            <div id="loginAlert" class="mb-5 container col-10"></div>
         </div>
     </main>
     <?php require_once(FOOTER) ?>

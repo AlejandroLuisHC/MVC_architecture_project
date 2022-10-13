@@ -4,13 +4,18 @@
         public function index() {
             require_once MODELS . 'GenresModel.php';
             $genres = new GenresModel();
-            $data["title"] = "Genres";
             $data["genres"] = $genres -> getGenres();
             require_once VIEWS . 'genres/genres.php';
         }
 
+        public function getData() {
+            require_once MODELS . 'GenresModel.php';
+            $genres = new GenresModel();
+            $data["genres"] = $genres -> getGenres();
+            echo json_encode($data['genres']);
+        }
+
         public function add() {
-            $data["title"] = "Genres";
             require_once VIEWS . 'genres/genresCreate.php';
         }
 
@@ -28,7 +33,7 @@
             require_once MODELS . 'GenresModel.php';
             $genres = new GenresModel();
             $genres -> insertGenre($genre);
-            $this -> index();
+            header('Location: ' . BASE_URL . 'index.php?C=Genres');
         }
 
         public function delete() {
@@ -37,7 +42,7 @@
             require_once MODELS . 'GenresModel.php';
             $genres = new GenresModel();
             $genres -> deleteGenre($genre_id);
-            $this -> index();
+            $this -> getData();
         }
 
         public function update() {
@@ -47,6 +52,6 @@
             require_once MODELS . 'GenresModel.php';
             $genres = new GenresModel();
             $genres -> updateGenres($genre_id, $genre);
-            $this -> index();
+            header('Location: ' . BASE_URL . 'index.php?C=Genres');
         }
     }

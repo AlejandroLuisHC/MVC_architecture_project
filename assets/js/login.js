@@ -1,28 +1,32 @@
 const 
-    loginForm = document.getElementById('loginForm'),
-    logoutInfo = document.getElementById('logoutInfo'),
-    loginAlert = document.getElementById('loginAlert');
+    loginForm   = document.getElementById('loginForm'),
+    logoutInfo  = document.getElementById('logoutInfo'),
+    userIn      = document.getElementById('userIn'),
+    pwdIn       = document.getElementById('pwdIn'),
+    loginAlert  = document.getElementById('loginAlert');
 
 window.onload = clearLogInfo();
 
 loginForm.addEventListener('submit', e => {
     e.preventDefault();
     logoutInfo.style.display = 'none';
-
+    
     loginData = new FormData(loginForm);
     fetch('index.php?C=Login', {
         method: 'POST',
         body: loginData,
     })
-        .then(res => res.json())
-        .then(data => {
-            if (data === "OK") {
-                location.replace("index.php");
-            } else {
-                let errMsg = document.createElement('span');
-                errMsg.className = 'alert alert-danger';
-                errMsg.textContent = data;
-                while(loginAlert.hasChildNodes()){
+    .then(res => res.json())
+    .then(data => {
+        if (data === "OK") {
+            location.replace("index.php");
+        } else {
+            userIn.value = "";
+            pwdIn.value = "";
+            let errMsg = document.createElement('span');
+            errMsg.className = 'alert alert-danger';
+            errMsg.textContent = data;
+            while(loginAlert.hasChildNodes()){
                     loginAlert.removeChild(loginAlert.firstChild);
                 };
                 loginAlert.appendChild(errMsg);
