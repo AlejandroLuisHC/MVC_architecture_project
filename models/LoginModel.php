@@ -43,7 +43,6 @@
 
                     } else {
                         echo json_encode("User or password incorrect");
-                    
                     }
                 } else {
                     echo json_encode("User or password incorrect");
@@ -57,7 +56,7 @@
 
         public function checkOut() {
             session_destroy();
-            header('Location: ' . BASE_URL . 'index.php?logout=1');
+            header('Location: ' . BASE_URL . 'index.php?logout');
             
         }
     }

@@ -14,7 +14,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous" defer></script>
     <link rel="stylesheet" href="assets/css/style.css">
     <script src="https://kit.fontawesome.com/fe24ce668c.js" crossorigin="anonymous"></script>
-    <script src="assets/js/dashboard.js" defer></script>
 </head>
 <body>
     <?php require_once(HEADER) ?>
@@ -37,15 +36,17 @@
                     <tr>
                         <th style="width: 150px;">#</th>
                         <th>Genre</th>
-                        <?php 
-                            if ($_SESSION['role'] == 'admin') {
-                                echo "<th style='width: 200px;'>Actions</th>";
-                            }
-                        ?>
                     </tr>
                 </thead>
                 <tbody id="tBody">
-
+                    <?php 
+                        foreach ($data['genres'] as $d) {
+                            echo "<tr>";
+                            echo "<td>" . $d['genre_id'] . "</td>";
+                            echo "<td>" . $d['genre'] . "</td>";
+                            echo "</tr>";
+                        }
+                    ?>
                 </tbody>
             </table>
         </div>

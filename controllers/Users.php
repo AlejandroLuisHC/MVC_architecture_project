@@ -4,14 +4,19 @@
         public function index() {
             require_once MODELS . 'UsersModel.php';
             $users = new UsersModel();
-            $data["title"] = "Users";
             $data["users"] = $users -> getUsers();
             
             require_once VIEWS . 'users/users.php';
         }
         
+        public function getData() {
+            require_once MODELS . 'UsersModel.php';
+            $users = new UsersModel();
+            $data["users"] = $users -> getUsers();
+            echo json_encode($data['users']);
+        }
+
         public function add() {
-            $data["title"] = "Users";
             require_once 'views/users/usersCreate.php';
         }
         
@@ -32,7 +37,7 @@
             require_once MODELS . 'UsersModel.php';
             $users = new UsersModel();
             $users -> insertUser($user, $email, $password, $role);
-            $this -> index();
+            header('Location: ' . BASE_URL . 'index.php?C=Users');
         }
 
         public function delete() {
@@ -41,7 +46,7 @@
             require_once MODELS . 'UsersModel.php';
             $users = new UsersModel();
             $users -> deleteUser($id);
-            $this -> index();
+            $this -> getData();
         }
 
         public function update() {
@@ -54,7 +59,7 @@
             require_once MODELS . 'UsersModel.php';
             $users = new UsersModel();
             $users -> updateBand($id, $user, $email, $password, $role);
-            $this -> index();
+            header('Location: ' . BASE_URL . 'index.php?C=Users');
         }
     }
     

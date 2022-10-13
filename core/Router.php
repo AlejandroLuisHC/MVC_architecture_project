@@ -3,10 +3,21 @@
 
     class Router {
         function __construct() {
+                                            
             
             if (isset($_GET['logout'])) {
                 $logMsg = "<span class='alert alert-success'>You have successfully logged out.<span>";
                 require_once VIEWS . "main/login.php";
+            }
+            
+            if (isset($_GET['display'])) {
+                $controllerName = $_GET['C'] . 'Controller';
+                $controllerPath = CONTROLLERS . $_GET['C'] . ".php";
+                $fileExists = file_exists($controllerPath);
+                require_once $controllerPath;
+                $controller = new $controllerName();
+                
+                $controller -> getData();
             } else if (!isset($_GET['C'])) {
                 if (isset($_SESSION['user'])) {
                     require_once VIEWS . "main/main.php";
@@ -28,9 +39,13 @@
                         if ($_GET['C'] !== 'Login') {
                             if (!isset($_SESSION['user'])) {
                                 require_once VIEWS . "main/login.php";
-                                
-                            } else  {
-                                $controller -> index();
+   
+                            } else {
+                                if($_SESSION['role'] !== 'admin') {
+                                    $controller -> indexUser();
+                                } else { 
+                                    $controller -> index();
+                                }
 
                             }
                             
