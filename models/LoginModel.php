@@ -37,28 +37,27 @@
                     if ($userData['password'] == $this -> pass) {
                         $storeUser = $userData['user'];
                         $storeRole = $userData['role'];
-
-                        $_SESSION['user'] = $storeUser;
+                        $_SESSION['user'] = ucwords($storeUser);
                         $_SESSION['role'] = $storeRole;
-
-                        require_once VIEWS . "main/main.php";
+                        echo json_encode("OK");
 
                     } else {
-                        $errorMsg = "User or password incorrect";
-                        require_once VIEWS . "error/error.php";
+                        echo json_encode("User or password incorrect");
+                    
                     }
                 } else {
-                    $errorMsg = "User or password incorrect";
-                    require_once VIEWS . "error/error.php";
+                    echo json_encode("User or password incorrect");
+                    
                 }
             } catch (PDOException $e) {
-                $errorMsg = "There was a problem accessing the database";
-                $e -> getMessage();
-                
+                echo json_encode("There was a problem accessing the database");
+            
             }
         }
 
         public function checkOut() {
             session_destroy();
+            header('Location: ' . BASE_URL . 'index.php?logout=1');
+            
         }
     }

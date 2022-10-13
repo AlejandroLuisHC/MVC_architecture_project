@@ -15,10 +15,10 @@
     <?php require_once(HEADER) ?>
     <main>
         <div class="welcome">
-            <h2>Welcome, <?php $userSession = $_SESSION['user']; echo $userSession; ?></h2>
+            <h2 class="mt-5">Welcome, <?php $userSession = $_SESSION['user']; echo $userSession; ?>.</h2>
         </div>
         <div class="mt-5 container col-8 justify-content-center align-items-center">
-            <h1>Tables availables</h1>
+            <h2>Tables availables</h2>
             <div class="list-group">
                 <a class="list-group-item list-group-item-action" href="?C=Bands">List of bands</a>
                 <a class="list-group-item list-group-item-action" href="?C=Genres">List of genres</a>

@@ -20,7 +20,6 @@
             require_once MODELS . 'LoginModel.php';
             $user = new LoginModel();
             $user -> checkOut();
-            header('Location: ' . MAIN_PAGE);
-            
+            // header('Location: ' . MAIN_PAGE . '?logout=1');
         }
     }

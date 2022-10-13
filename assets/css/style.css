@@ -41,6 +41,7 @@ nav {
     padding: 0 40px;
     justify-content: right;
     align-items: center;
+    gap: 15px;
 }
 footer {
     grid-column: span 3;
