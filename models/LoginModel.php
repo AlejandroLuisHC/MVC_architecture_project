@@ -43,7 +43,6 @@
 
                     } else {
                         echo json_encode("User or password incorrect");
-                    
                     }
                 } else {
                     echo json_encode("User or password incorrect");

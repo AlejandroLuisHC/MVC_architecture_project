@@ -8,6 +8,13 @@
             require_once VIEWS . 'genres/genres.php';
         }
 
+        public function indexUser() {
+            require_once MODELS . 'GenresModel.php';
+            $genres = new GenresModel();
+            $data["genres"] = $genres -> getGenres();
+            require_once VIEWS . 'genres/genres_user.php';
+        }
+
         public function getData() {
             require_once MODELS . 'GenresModel.php';
             $genres = new GenresModel();

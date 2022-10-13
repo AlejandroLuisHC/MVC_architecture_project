@@ -40,8 +40,12 @@
                             if (!isset($_SESSION['user'])) {
                                 require_once VIEWS . "main/login.php";
    
-                            } else  {
-                                $controller -> index();
+                            } else {
+                                if($_SESSION['role'] !== 'admin') {
+                                    $controller -> indexUser();
+                                } else { 
+                                    $controller -> index();
+                                }
 
                             }
                             

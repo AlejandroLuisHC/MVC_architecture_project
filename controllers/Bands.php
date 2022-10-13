@@ -8,6 +8,13 @@
             require_once VIEWS . 'bands/bands.php';
         }
 
+        public function indexUser() {
+            require_once MODELS . 'BandsModel.php';
+            $bands = new BandsModel();
+            $data["bands"] = $bands -> getBands();
+            require_once VIEWS . 'bands/bands_user.php';
+        }
+
         public function getData() {
             require_once MODELS . 'BandsModel.php';
             $bands = new BandsModel();

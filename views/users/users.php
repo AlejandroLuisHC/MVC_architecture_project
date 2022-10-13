@@ -35,7 +35,7 @@
                         <th>User</th>
                         <th>email</th>
                         <th>role</th>
-                        <th style="width: 150px;">Actions</th>
+                        <th style="width: 200px;">Actions</th>
                     </tr>
                 </thead>
                 <tbody id="tBody">
