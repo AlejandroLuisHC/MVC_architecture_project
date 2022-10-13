@@ -1,14 +1,14 @@
 `#mvc` `#php` `#master-in-software-development`
-# MVC_pattern_basics
-The main purpouse of this proyect is to get to know the MVC Architecture Pattern as well as to keep improving SQL Database skills by creating a CRUD program.
+# MVC_architecture_project
+The main purpose of this proyect is to get to know the MVC Architecture Pattern as well as to keep improving and honing backend skills by creating a CRUD program.
 
 ## What are the main objectives in this project?
-* Understand what it is an architecture pattern, what it is used for, and what advantages it can bring to the project
-* Learn to implement the MVC pattern
-* Learn more about the use of this pattern for future implementations in popular Working Frameworks
+* Improve at building MVC Architecture, and better understand what advantages it can bring to projects
+* Hone backend development skills
+* Learn more about the use of this architectural pattern for future implementations in popular Working Frameworks
 
 ## Prerequisites
-In this proyect it was used phpMyAdmin, with [XAMPP](https://www.apachefriends.org/) to create a local server using MaríaDB.
+In this proyect it was used phpMyAdmin, with [XAMPP](https://www.apachefriends.org/) to create a local server using MariaDB.
 
 ## Acknowledgments
 * Assembler Institute of Technology
