@@ -44,10 +44,19 @@
         }
 
         public function insertBand($band_name, $no_members, $no_albums, $band_genre, $formed_in) {
-            $sql = "INSERT INTO bands_data (band_name, no_members, no_albums, band_genre, formed_in)
-                    VALUES ('$band_name', '$no_members', '$no_albums', '$band_genre', '$formed_in')";
+            $sql = $this -> db -> prepare(
+                "INSERT INTO bands_data (band_name, no_members, no_albums, band_genre, formed_in)
+                VALUES (?, ?, ?, ?, ?)");
+            
+            $sql -> bindParam(1, $band_name);
+            $sql -> bindParam(2, $no_members);
+            $sql -> bindParam(3, $no_albums);
+            $sql -> bindParam(4, $band_genre);
+            $sql -> bindParam(5, $formed_in);
+
             try {
-                $res = $this -> db -> query($sql);       
+                $sql -> execute();
+
             } catch (PDOException $e) {
                 $errorMsg = "There was a problem accessing the database";
                 $e -> getMessage();

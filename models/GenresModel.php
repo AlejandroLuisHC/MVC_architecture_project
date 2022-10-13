@@ -41,10 +41,15 @@
         }
         
         public function insertGenre($genre) {
-            $sql = "INSERT INTO genres (genre)
-                    VALUES ('$genre')";
+            $sql = $this -> db -> prepare(
+                "INSERT INTO genres (genre)
+                VALUES (?)");
+
+            $sql -> bindParam(1, $genre);
+
             try {
-                $res = $this -> db -> query($sql);       
+                $sql -> execute();  
+                     
             } catch (PDOException $e) {
                 $errorMsg = "There was a problem accessing the database";
                 $e -> getMessage();

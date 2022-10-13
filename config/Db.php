@@ -9,8 +9,8 @@
             $password   = '';
             try {
                 $dbh = new PDO ($database . ":host=" . $host . ';port=' . $port, $user, $password);
-                $dbh -> query("USE bands");
                 $dbh -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                $dbh -> query("USE bands");
 
                 return $dbh;
             } catch (PDOException $e) {
