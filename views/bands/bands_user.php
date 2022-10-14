@@ -14,6 +14,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous" defer></script>
     <link rel="stylesheet" href="assets/css/style.css">
     <script src="https://kit.fontawesome.com/fe24ce668c.js" crossorigin="anonymous"></script>
+    <script src="assets/js/dashboard_user.js" defer></script>
 </head>
 <body>
     <?php require_once(HEADER) ?>
@@ -43,18 +44,7 @@
                     </tr>
                 </thead>
                 <tbody id="tBody">
-                    <?php 
-                        foreach ($data['bands'] as $d) {
-                            echo "<tr>";
-                            echo "<td>" . $d['band_id'] . "</td>";
-                            echo "<td>" . $d['band_name'] . "</td>";
-                            echo "<td>" . $d['no_members'] . "</td>";
-                            echo "<td>" . $d['no_albums'] . "</td>";
-                            echo "<td>" . $d['genre'] . "</td>";
-                            echo "<td>" . $d['formed_in'] . "</td>";
-                            echo "</tr>";
-                        }
-                    ?>
+                    
                 </tbody>
             </table>
         </div>
