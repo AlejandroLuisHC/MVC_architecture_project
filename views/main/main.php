@@ -15,7 +15,7 @@
     <?php require_once(HEADER) ?>
     <main>
         <div class="welcome">
-            <h2 class="mt-5">Welcome, <?php $userSession = $_SESSION['user']; echo $userSession; $role = $_SESSION['role']; echo "<br>Role: $role";?>.</h2>
+            <h2 class="mt-5">Welcome, <?php $userSession = $_SESSION['user']; echo $userSession; if(isset($_SESSION['adminMode'])){$role = $_SESSION['role']; echo "<br>Role: $role";};?>.</h2>
         </div>
         <div class="mt-5 container col-8 justify-content-center align-items-center">
             <h2>Tables availables</h2>

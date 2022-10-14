@@ -39,6 +39,9 @@
                         $storeRole = $userData['role'];
                         $_SESSION['user'] = ucwords($storeUser);
                         $_SESSION['role'] = $storeRole;
+                        if ($_SESSION['role'] == 'admin') {
+                            $_SESSION['adminMode'] = 'on';
+                        }
                         echo json_encode("OK");
 
                     } else {
