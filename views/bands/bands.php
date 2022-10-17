@@ -41,11 +41,7 @@
                         <th>No. albums</th>
                         <th>Genre</th>
                         <th>Formed in</th>
-                        <?php 
-                            if ($_SESSION['role'] == 'admin') {
-                                echo "<th style='width: 200px;'>Actions</th>";
-                            }
-                        ?>
+                        <th style='width: 200px;'>Actions</th>
                     </tr>
                 </thead>
                 <tbody id="tBody">

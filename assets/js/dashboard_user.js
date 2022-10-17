@@ -20,7 +20,12 @@ function list(data){
             <td>${data[i].no_members}</td>
             <td>${data[i].no_albums}</td>
             <td>${data[i].genre}</td>
-            <td>${data[i].formed_in}</td>`;
+            <td>${data[i].formed_in}</td>
+            <td>
+                <a class="btn btn-secondary" href='index.php?C=${C}&action=albums&band=${data[i].band_name}'>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </td>`;
             
         let genresTable = `<td>${data[i].genre_id}</td>
             <td>${data[i].genre}</td>`;
@@ -56,7 +61,7 @@ function list(data){
 }
 
 function dashboardPrint(){
-    fetch (`index.php?display=${C}&C=${C}`)
+    fetch (`index.php?display&C=${C}`)
         .then(res => res.json())
         .then(data => {
             list(data);

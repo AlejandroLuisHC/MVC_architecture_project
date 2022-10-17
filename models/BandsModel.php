@@ -29,7 +29,8 @@
         }
 
         public function getAlbums($band) {
-            $sql = "SELECT * FROM $band . '_albums'";
+            $table = str_replace(' ', '_', $band) . '_albums';
+            $sql = "SELECT * FROM $table";
 
             try {
                 $res = $this -> db -> query($sql);

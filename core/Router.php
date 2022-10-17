@@ -16,24 +16,13 @@
             }
             
             if (isset($_GET['display'])) {
-                if ($_GET['display'] = $_GET['C']) {
-                    $controllerName = $_GET['C'] . 'Controller';
-                    $controllerPath = CONTROLLERS . $_GET['C'] . ".php";
-                    $fileExists = file_exists($controllerPath);
-                    require_once $controllerPath;
-                    $controller = new $controllerName();
-                    $controller -> getData();
-                    
-                } else if ($_GET['display'] = 'albums') {
-                    $controllerName = $_GET['C'] . 'Controller';
-                    $controllerPath = CONTROLLERS . $_GET['C'] . ".php";
-                    $fileExists = file_exists($controllerPath);
-                    require_once $controllerPath;
-                    $controller = new $controllerName();
-                    $controller -> getAlbums();
-                    
-                }
-
+                $controllerName = $_GET['C'] . 'Controller';
+                $controllerPath = CONTROLLERS . $_GET['C'] . ".php";
+                $fileExists = file_exists($controllerPath);
+                require_once $controllerPath;
+                $controller = new $controllerName();
+                $controller -> getData();
+                
             } else if (!isset($_GET['C'])) {
                 if (isset($_SESSION['user'])) {
                     require_once VIEWS . "main/main.php";
@@ -101,8 +90,9 @@
 
                             } else if (strtolower($_GET['action']) == 'logout') {
                                 $controller -> logOut(); 
-
-                            } 
+                            } else if (strtolower($_GET['action']) == 'albums') {
+                                $controller -> indexAlbums(strtolower($_GET['band'])); 
+                            }
                         }
                     }
 

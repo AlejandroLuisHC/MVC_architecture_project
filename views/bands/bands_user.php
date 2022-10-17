@@ -41,6 +41,7 @@
                         <th>No. albums</th>
                         <th>Genre</th>
                         <th>Formed in</th>
+                        <th style='width: 200px;'>More info</th>"
                     </tr>
                 </thead>
                 <tbody id="tBody">
