@@ -79,19 +79,33 @@
                             } else if (strtolower($_GET['action']) == 'insert') {
                                 $controller -> insert();
 
+                            } else if (strtolower($_GET['action']) == 'insertAlbum') {
+                                $controller -> insertAlbum(strtolower($_GET['band']));
+
                             } else if (strtolower($_GET['action']) == 'delete') {
                                 $controller -> delete(); 
+
+                            } else if (strtolower($_GET['action']) == 'deleteAlbum') {
+                                $controller -> deleteAlbum(strtolower($_GET['band'])); 
 
                             } else if (strtolower($_GET['action']) == 'read') {
                                 $controller -> read(); 
 
+                            } else if (strtolower($_GET['action']) == 'readAlbum') {
+                                $controller -> readAlbum(strtolower($_GET['band'])); 
+                                
                             } else if (strtolower($_GET['action']) == 'update') {
                                 $controller -> update(); 
 
+                            } else if (strtolower($_GET['action']) == 'updateAlbum') {
+                                $controller -> updateAlbum(strtolower($_GET['band'])); 
+
                             } else if (strtolower($_GET['action']) == 'logout') {
                                 $controller -> logOut(); 
+
                             } else if (strtolower($_GET['action']) == 'albums') {
                                 $controller -> indexAlbums(strtolower($_GET['band'])); 
+
                             }
                         }
                     }
