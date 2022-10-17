@@ -56,7 +56,7 @@ function list(data){
 }
 
 function dashboardPrint(){
-    fetch (`index.php?display&C=${C}`)
+    fetch (`index.php?display=${C}&C=${C}`)
         .then(res => res.json())
         .then(data => {
             list(data);

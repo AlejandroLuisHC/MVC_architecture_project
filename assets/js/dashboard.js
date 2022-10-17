@@ -78,13 +78,19 @@ function list(data){
         let tr = document.createElement('tr');
         tr.innerHTML = table;
         tbody.appendChild(tr);
-        prepareModal(`${data[i].band_id}`);
-        
-    };
+
+        if (C == 'Bands') { 
+            prepareModal(data[i].band_id);
+        } else if (C == 'Genres') { 
+            prepareModal(data[i].genre_id);
+        } else if (C == 'Users') { 
+            prepareModal(data[i].id);
+        }
+    }
 }
 
 function dashboardPrint(){
-    fetch (`index.php?display&C=${C}`)
+    fetch (`index.php?display=${C}&C=${C}`)
         .then(res => res.json())
         .then(data => {
             list(data);

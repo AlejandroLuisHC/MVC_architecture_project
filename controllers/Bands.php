@@ -22,6 +22,13 @@
             echo json_encode($data['bands']);
         }
 
+        public function getDataAlbums() {
+            require_once MODELS . 'BandsModel.php';
+            $albums = new BandsModel();
+            $data["albums"] = $albums -> getAlbums();
+            echo json_encode($data['albums']);
+        }
+
         public function add() {
             require_once 'views/bands/bandsCreate.php';
         }

@@ -28,6 +28,22 @@
             }
         }
 
+        public function getAlbums($band) {
+            $sql = "SELECT * FROM $band . '_albums'";
+
+            try {
+                $res = $this -> db -> query($sql);
+                while ($row = $res -> fetch()){
+                    $this -> albums[] = $row;
+                }
+                return $this -> albums;
+            } catch (PDOException $e) {
+                $errorMsg = "There was a problem accessing the database";
+                $e -> getMessage();
+                require_once VIEWS . "error/error.php";
+            }
+        }
+
         public function getBand($band_id) {
             $sql = "SELECT * FROM bands_data WHERE band_id = $band_id";
             try {

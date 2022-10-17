@@ -16,12 +16,23 @@
             }
             
             if (isset($_GET['display'])) {
-                $controllerName = $_GET['C'] . 'Controller';
-                $controllerPath = CONTROLLERS . $_GET['C'] . ".php";
-                $fileExists = file_exists($controllerPath);
-                require_once $controllerPath;
-                $controller = new $controllerName();
-                $controller -> getData();
+                if ($_GET['display'] = $_GET['C']) {
+                    $controllerName = $_GET['C'] . 'Controller';
+                    $controllerPath = CONTROLLERS . $_GET['C'] . ".php";
+                    $fileExists = file_exists($controllerPath);
+                    require_once $controllerPath;
+                    $controller = new $controllerName();
+                    $controller -> getData();
+                    
+                } else if ($_GET['display'] = 'albums') {
+                    $controllerName = $_GET['C'] . 'Controller';
+                    $controllerPath = CONTROLLERS . $_GET['C'] . ".php";
+                    $fileExists = file_exists($controllerPath);
+                    require_once $controllerPath;
+                    $controller = new $controllerName();
+                    $controller -> getAlbums();
+                    
+                }
 
             } else if (!isset($_GET['C'])) {
                 if (isset($_SESSION['user'])) {
