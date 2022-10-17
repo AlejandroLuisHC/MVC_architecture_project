@@ -53,6 +53,9 @@
                 </tbody>
             </table>
         </div>
+        
+        <!-- MODALS -->
+        <div id="deleteModalBox"></div>
     </main>
     <?php require_once(FOOTER) ?>
 </body>
