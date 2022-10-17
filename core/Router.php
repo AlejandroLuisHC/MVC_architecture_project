@@ -22,7 +22,7 @@
                 require_once $controllerPath;
                 $controller = new $controllerName();
                 $controller -> getData();
-
+                
             } else if (!isset($_GET['C'])) {
                 if (isset($_SESSION['user'])) {
                     require_once VIEWS . "main/main.php";
@@ -90,8 +90,9 @@
 
                             } else if (strtolower($_GET['action']) == 'logout') {
                                 $controller -> logOut(); 
-
-                            } 
+                            } else if (strtolower($_GET['action']) == 'albums') {
+                                $controller -> indexAlbums(strtolower($_GET['band'])); 
+                            }
                         }
                     }
 

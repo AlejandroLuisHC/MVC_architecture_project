@@ -56,6 +56,16 @@ footer {
     font-size: 45px;
     font-weight: bolder;
 }
+.main-title-albums {
+    font-size: 45px;
+    font-weight: bolder;
+    color: #eee;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, .7);
+    margin-bottom: 40px;
+}
+.body-albums {
+    background-color: #666;
+}
 .error-msg {
     grid-column: 1;
     grid-row: 2;
@@ -63,4 +73,103 @@ footer {
     margin-top: 15vh;
     color: red;
     text-align: center;
+}
+.albums-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.albums {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+}
+.album-card {
+    width: 100%;
+    margin-bottom: 40px;
+    height: 600px;
+    width: 333px;
+    display: grid;
+    grid-template-rows: 1fr 5fr 1fr;
+    background-color: #ddd;
+    border: 1px solid rgba(0, 0, 0, .7);
+    box-shadow: 2px 2px 7px rgba(0, 0, 0, .5);
+    border-radius: 10px;
+    padding: 15px;
+}
+.album-title {
+    font-weight: bold;
+    font-size: 40px;
+}
+.album-card span {
+    font-size: 20px;
+}
+.img-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 5s;   
+}
+.img-container img {
+    width: 300px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.img-container:hover {
+    transform: rotate(360deg);
+}
+.spotify-btn {
+    text-align: center;
+    margin-top: 5px;
+    font-size: 30px;
+    color: rgb(30, 215, 96);
+    font-weight: 500;
+    text-decoration: none;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, .2);
+    transition: 250ms;
+}
+.spotify-btn:hover {
+    transform: scale(1.1);
+    color: rgb(30, 215, 96);
+}
+
+@media screen and (max-width: 1800px) {
+    .albums {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media screen and (max-width: 1420px) {
+    .albums {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+@media screen and (max-width: 1066px) {
+    .albums {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media screen and (max-width: 720px) {
+    .albums {
+        grid-template-columns: repeat(1, 1fr);
+    }
+    .album-card {
+        width: 600px;
+        height: 333px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .info-album {
+        display: flex;
+        flex-direction: column;
+        width: 200px;
+    }
+    .album-title {
+        font-size: 35px;
+    }
+    .img-container img {
+        width: 300px;
+    }
 }

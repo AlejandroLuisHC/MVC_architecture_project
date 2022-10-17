@@ -8,6 +8,14 @@
             require_once VIEWS . 'bands/bands.php';
         }
 
+        public function indexAlbums($band) {
+            require_once MODELS . 'BandsModel.php';
+            $albums = new BandsModel();
+            $bandName = ucwords($band);
+            $data["albums"] = $albums -> getAlbums($band);
+            require_once VIEWS . 'bands/albums.php';
+        }
+        
         public function indexUser() {
             require_once MODELS . 'BandsModel.php';
             $bands = new BandsModel();
