@@ -10,5 +10,7 @@ The main purpose of this proyect is to get to know the MVC Architecture Pattern 
 ## Prerequisites
 In this proyect it was used phpMyAdmin, with [XAMPP](https://www.apachefriends.org/) to create a local server using MariaDB.
 
+The database used for this project can be replicated using the provided file "Db.sql" in "resources" folder. 
+
 ## Acknowledgments
 * Assembler Institute of Technology
