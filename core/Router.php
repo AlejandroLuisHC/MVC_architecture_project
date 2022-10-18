@@ -23,6 +23,15 @@
                 $controller = new $controllerName();
                 $controller -> getData();
                 
+            } else if (isset($_GET['displayAlbums'])) {
+                $controllerName = $_GET['C'] . 'Controller';
+                $controllerPath = CONTROLLERS . $_GET['C'] . ".php";
+                $fileExists = file_exists($controllerPath);
+                require_once $controllerPath;
+                $controller = new $controllerName();
+
+                $controller -> getDataAlbums(strtolower($_GET['band']));
+
             } else if (!isset($_GET['C'])) {
                 if (isset($_SESSION['user'])) {
                     require_once VIEWS . "main/main.php";
@@ -76,28 +85,31 @@
                             if (strtolower($_GET['action']) == 'add') {
                                 $controller -> add();
 
+                            } else if (strtolower($_GET['action']) == 'addalbum') {
+                                $controller -> addAlbum();
+
                             } else if (strtolower($_GET['action']) == 'insert') {
                                 $controller -> insert();
 
-                            } else if (strtolower($_GET['action']) == 'insertAlbum') {
+                            } else if (strtolower($_GET['action']) == 'insertalbum') {
                                 $controller -> insertAlbum(strtolower($_GET['band']));
 
                             } else if (strtolower($_GET['action']) == 'delete') {
                                 $controller -> delete(); 
 
-                            } else if (strtolower($_GET['action']) == 'deleteAlbum') {
+                            } else if (strtolower($_GET['action']) == 'deletealbum') {
                                 $controller -> deleteAlbum(strtolower($_GET['band'])); 
 
                             } else if (strtolower($_GET['action']) == 'read') {
                                 $controller -> read(); 
 
-                            } else if (strtolower($_GET['action']) == 'readAlbum') {
+                            } else if (strtolower($_GET['action']) == 'readalbum') {
                                 $controller -> readAlbum(strtolower($_GET['band'])); 
                                 
                             } else if (strtolower($_GET['action']) == 'update') {
                                 $controller -> update(); 
 
-                            } else if (strtolower($_GET['action']) == 'updateAlbum') {
+                            } else if (strtolower($_GET['action']) == 'updatealbum') {
                                 $controller -> updateAlbum(strtolower($_GET['band'])); 
 
                             } else if (strtolower($_GET['action']) == 'logout') {

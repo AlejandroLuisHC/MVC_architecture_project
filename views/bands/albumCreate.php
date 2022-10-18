@@ -18,24 +18,24 @@
     <?php require_once(HEADER) ?>
     <main>
         <div class="mt-5 container-fluid">
-            <form class="mb-3 container justify-content-center" action="?C=Bands&action=insertAlbum&band=<?= $_GET['band']?>" method="POST" name="new" autocomplete="off">
+            <form class="mb-3 container justify-content-center" action="?C=Bands&action=insertalbum&band=<?= $_GET['band']?>" method="POST" name="new" autocomplete="off">
                 <fieldset>
                     <legend class="text-center">Add new album to the database</legend>
                     <div class="mb-3 col-6 container justify-content-center">
                         <label class="form-label" for="album_name">Album name:</label>
-                        <input class="form-control" type="text" maxlength="50" name="album_name">
+                        <input class="form-control" type="text" maxlength="50" name="album_name" required>
                     </div>
                     <div class="mb-3 col-6 container justify-content-center">
                         <label class="form-label" for="album_year">Album release year:</label>
-                        <input class="form-control" type="number" name="album_year">
+                        <input class="form-control" type="number" value="2022" name="album_year" required>
                     </div>
                     <div class="mb-3 col-6 container justify-content-center">
                         <label class="form-label" for="album_img">Album img path:</label>
-                        <input class="form-control" type="text" name="album_img">
+                        <input class="form-control" type="text" name="album_img" required>
                     </div>
                     <div class="mb-3 col-6 container justify-content-center">
                         <label class="form-label" for="spotify">Album Spotify URL:</label>
-                        <input class="form-select" type="text" name="spotify">
+                        <input class="form-select" type="text" name="spotify" required>
                     </div>
                     <div class="mb-3 col-6 container justify-content-center">
                         <button type="submit" name="submit" class="btn btn-primary">Submit</button>

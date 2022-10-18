@@ -1,5 +1,5 @@
 <?php
-    
+
 ?>
 
 <!DOCTYPE html>
@@ -14,45 +14,33 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous" defer></script>
     <link rel="stylesheet" href="assets/css/style.css">
     <script src="https://kit.fontawesome.com/fe24ce668c.js" crossorigin="anonymous"></script>
+    <script src="assets/js/dashboard.js" defer></script>
 </head>
-<body>
+<body class="body-albums">
     <?php require_once(HEADER) ?>
     <main>
-        <div class="container-fluid text-center mt-3">
-            <h2 id="tableTitle" class="main-title"><?= $bandName; ?>'s albums</h2>
-        </div>
+        <section class="albums-section">
+            <div class="container-fluid text-center mt-3">
+                <h2 id="tableTitle" class="mt-4 main-title-albums"><?= $bandName; ?>'s albums</h2>
+            </div>
+            <div class="albums">
+            <?php
+                foreach ($data['albums'] as $d) {
+                echo "
+                    <div class='album-card'>
+                        <div class='info-album'>
+                            <h3 class='album-title'>" . $d['album_name'] . "</h3>
+                            <span>" . $d['album_year'] . "</span>
+                        </div>
+                        <div class='img-container'><img src='" . $d['album_img'] . "' alt='" . $d['album_name'] . "'></div>
+                        <a class='spotify-btn' href='" . $d['spotify'] . "' target='_blank'>Listen now! <i class='fa-brands fa-spotify'></i></a>
+                    </div>
+                ";
+                }
+            ?>
+            </div>
+        </section>
 
-        <div class="container text-center mt-5">
-            <a class="col-6 align-self-center btn btn-primary" href="?C=Bands&action=addAlbum&band=<?= $_GET['band']?>">Add</a>
-        </div>
-        
-        <div class="container-fluid">
-            <table class="mt-3 table table-dark table-striped">
-                <thead>
-                    <tr>
-                        <th style="width: 150px;">#</th>
-                        <th>Album name</th>
-                        <th>Album year</th>
-                        <th style="width: 200px;">Actions</th>
-                    </tr>
-                </thead>
-                <tbody id="tBody">
-                    <?php 
-                        foreach ($data['albums'] as $d) {
-                            echo "<tr>";
-                            echo "<td>" . $d['album_id'] . "</td>";
-                            echo "<td>" . $d['album_name'] . "</td>";
-                            echo "<td>" . $d['album_year'] . "</td>";
-                            echo "<td><a class='btn btn-warning' href='?C=Bands&action=readAlbum&id=" . $d['album_id'] . "&band=" . $_GET['band'] . "'><i class='fa-solid fa-pen'></i></a> or <a class='btn btn-danger' href='?C=Bands&action=deleteAlbum&id=" . $d['album_id'] . "&band=" . $_GET['band'] . "'><i class='fa-solid fa-trash'></i></a></td>";
-                            echo "</tr>";
-                        }
-                    ?>
-                </tbody>
-            </table>
-        </div>
-
-        <!-- MODALS -->
-        <div id="deleteModalBox"></div>
     </main>
     <?php require_once(FOOTER) ?>
 </body>

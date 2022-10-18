@@ -59,6 +59,21 @@
             }
         }
 
+        public function getAlbum($album_id, $table) {
+            $sql = "SELECT * FROM $table WHERE album_id = $album_id";
+            try {
+                $res = $this -> db -> query($sql);
+                while ($row = $res -> fetch()){
+                    $this -> bands[] = $row;
+                }
+                return $this -> bands;
+            } catch (PDOException $e) {
+                $errorMsg = "There was a problem accessing the database";
+                $e -> getMessage();
+                require_once VIEWS . "error/error.php";
+            }
+        }
+
         public function insertBand($band_name, $no_members, $no_albums, $band_genre, $formed_in) {
             $sql = $this -> db -> prepare(
                 "INSERT INTO bands_data (band_name, no_members, no_albums, band_genre, formed_in)
@@ -131,7 +146,7 @@
                         no_albums   = '$no_albums',
                         band_genre  = '$band_genre',
                         formed_in   = '$formed_in'
-                    WHERE band_id = $band_id";
+                    WHERE band_id   = $band_id";
             try {
                 $res = $this -> db -> query($sql);       
             } catch (PDOException $e) {
@@ -147,7 +162,7 @@
                         album_name  = '$album_name',
                         album_img   = '$album_img',
                         spotify     = '$spotify',
-                        album_year  = '$album_year',
+                        album_year  = '$album_year'
                     WHERE album_id  = $album_id";
             try {
                 $res = $this -> db -> query($sql);       

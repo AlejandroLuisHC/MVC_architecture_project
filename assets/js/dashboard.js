@@ -101,7 +101,6 @@ function dashboardPrint(){
 }
 
 function deleteItem(c, id) {
-    console.log('deleting');
     setTimeout(() => {
         fetch(`index.php?C=${c}&action=delete&id=${id}`)
             .then(res => res.json())

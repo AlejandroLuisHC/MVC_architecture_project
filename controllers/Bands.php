@@ -37,6 +37,14 @@
             $data["bands"] = $bands -> getBands();
             echo json_encode($data['bands']);
         }
+        public function getDataAlbums($band) {
+            $table = str_replace(' ', '_', $band) . '_albums';
+
+            require_once MODELS . 'BandsModel.php';
+            $albums = new BandsModel();
+            $data["albums"] = $albums -> getAlbums($band, $table);
+            echo json_encode($data['albums']);
+        }
 
         public function add() {
             require_once 'views/bands/bandsCreate.php';
@@ -56,10 +64,10 @@
         public function readAlbum($band) {
             $table = str_replace(' ', '_', $band) . '_albums';
 
-            $band_id = $_GET['id'];
+            $album_id = $_GET['id'];
             require_once MODELS . 'BandsModel.php';
-            $albums = new BandsModel();
-            $data["album"] = $albums -> getBand($table, $band_id);
+            $album = new BandsModel();
+            $data["album"] = $album -> getAlbum($album_id, $table);
             require_once VIEWS . 'bands/albumsUpdate.php';
         }
 
@@ -86,8 +94,8 @@
             
             require_once MODELS . 'BandsModel.php';
             $albums = new BandsModel();
-            $albums -> insertBand($table, $album_name, $album_img, $spotify, $album_year);
-            header('Location: ' . BASE_URL . 'index.php?C=Bands&action=albums&band=' . $band);
+            $albums -> insertAlbum($table, $album_name, $album_img, $spotify, $album_year);
+            header('Location: ' . BASE_URL . 'index.php?C=Bands&action=albums&band=' . ucwords($band));
         }
         
         public function delete() {
@@ -100,12 +108,12 @@
         }
         public function deleteAlbum($band) {
             $table = str_replace(' ', '_', $band) . '_albums';
-            $album_id  = $_GET['albumID'];       
+            $album_id  = $_GET['id'];       
             
             require_once MODELS . 'BandsModel.php';
             $albums = new BandsModel();
-            $albums -> deletAlbum($table, $album_id);
-            $this -> indexAlbums($band);
+            $albums -> deleteAlbum($table, $album_id);
+            $this -> getDataAlbums($band);
         }
         
         public function update() {
@@ -124,7 +132,7 @@
 
         public function updateAlbum($band) {
             $table = str_replace(' ', '_', $band) . '_albums';
-
+            
             $album_id       = $_POST['album_id'];
             $album_name     = $_POST['album_name'];
             $album_img      = $_POST['album_img']; 
@@ -132,8 +140,8 @@
             $album_year     = $_POST['album_year'];
             
             require_once MODELS . 'BandsModel.php';
-            $bands = new BandsModel();
-            $bands -> updateBand($table, $album_id, $album_name, $album_img, $spotify, $album_year);
+            $album = new BandsModel();
+            $album -> updateAlbum($table, $album_id, $album_name, $album_img, $spotify, $album_year);
             header('Location: ' . BASE_URL . 'index.php?C=Bands&action=albums&band=' . $band);
         }
     }
