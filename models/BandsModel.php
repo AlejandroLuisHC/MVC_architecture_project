@@ -28,8 +28,7 @@
             }
         }
 
-        public function getAlbums($band) {
-            $table = str_replace(' ', '_', $band) . '_albums';
+        public function getAlbums($band, $table) {
             $sql = "SELECT * FROM $table";
 
             try {
@@ -47,6 +46,21 @@
 
         public function getBand($band_id) {
             $sql = "SELECT * FROM bands_data WHERE band_id = $band_id";
+            try {
+                $res = $this -> db -> query($sql);
+                while ($row = $res -> fetch()){
+                    $this -> bands[] = $row;
+                }
+                return $this -> bands;
+            } catch (PDOException $e) {
+                $errorMsg = "There was a problem accessing the database";
+                $e -> getMessage();
+                require_once VIEWS . "error/error.php";
+            }
+        }
+
+        public function getAlbum($album_id, $table) {
+            $sql = "SELECT * FROM $table WHERE album_id = $album_id";
             try {
                 $res = $this -> db -> query($sql);
                 while ($row = $res -> fetch()){
@@ -81,9 +95,40 @@
             }
         }
 
+        public function insertAlbum($table, $album_name, $album_img, $spotify, $album_year) {
+            $sql = $this -> db -> prepare(
+                "INSERT INTO $table (album_name, album_img, spotify, album_year)
+                VALUES (?, ?, ?, ?)");
+            
+            $sql -> bindParam(1, $album_name);
+            $sql -> bindParam(2, $album_img);
+            $sql -> bindParam(3, $spotify);
+            $sql -> bindParam(4, $album_year);
+
+            try {
+                $sql -> execute();
+
+            } catch (PDOException $e) {
+                $errorMsg = "There was a problem accessing the database";
+                $e -> getMessage();
+                require_once VIEWS . "error/error.php";
+            }
+        }
+
         public function deleteBand($band_id) {
             $sql = "DELETE FROM bands_data
                     WHERE band_id = $band_id";
+            try {
+                $res = $this -> db -> query($sql);       
+            } catch (PDOException $e) {
+                $errorMsg = "There was a problem accessing the database";
+                $e -> getMessage();
+                require_once VIEWS . "error/error.php";
+            }
+        }
+        public function deleteAlbum($table, $album_id) {
+            $sql = "DELETE FROM $table
+                    WHERE album_id = $album_id";
             try {
                 $res = $this -> db -> query($sql);       
             } catch (PDOException $e) {
@@ -101,7 +146,24 @@
                         no_albums   = '$no_albums',
                         band_genre  = '$band_genre',
                         formed_in   = '$formed_in'
-                    WHERE band_id = $band_id";
+                    WHERE band_id   = $band_id";
+            try {
+                $res = $this -> db -> query($sql);       
+            } catch (PDOException $e) {
+                $errorMsg = "There was a problem accessing the database";
+                $e -> getMessage();
+                require_once VIEWS . "error/error.php";
+            }
+        }
+
+        public function updateAlbum($table, $album_id, $album_name, $album_img, $spotify, $album_year) {
+            $sql = "UPDATE $table
+                    SET
+                        album_name  = '$album_name',
+                        album_img   = '$album_img',
+                        spotify     = '$spotify',
+                        album_year  = '$album_year'
+                    WHERE album_id  = $album_id";
             try {
                 $res = $this -> db -> query($sql);       
             } catch (PDOException $e) {

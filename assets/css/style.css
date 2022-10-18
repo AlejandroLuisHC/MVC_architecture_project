@@ -98,6 +98,11 @@ footer {
     border-radius: 10px;
     padding: 15px;
 }
+.info-album {
+    display: flex;
+    flex-direction: column;
+    height: 150px;
+}
 .album-title {
     font-weight: bold;
     font-size: 40px;
@@ -165,6 +170,7 @@ footer {
         display: flex;
         flex-direction: column;
         width: 200px;
+        height: auto;
     }
     .album-title {
         font-size: 35px;
